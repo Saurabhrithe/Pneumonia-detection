@@ -23,7 +23,7 @@ def predict_label(img_path):
 
     return Dict[predictedLabel]
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
 
@@ -40,4 +40,4 @@ def get_output():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
