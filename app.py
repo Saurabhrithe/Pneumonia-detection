@@ -3,7 +3,6 @@ import cv2
 import numpy as np
 from tensorflow.keras.models import load_model
 import os
-from tensorflow.keras.preprocessing import image
 
 app = Flask(__name__)
 
@@ -19,8 +18,6 @@ def predict_label(img_path):
         sample_image = np.dstack([sample_image, sample_image, sample_image])
     sample_image = cv2.cvtColor(sample_image, cv2.COLOR_BGR2RGB)
     sample_image = sample_image.astype(np.float32) / 255.
-    sample_label = 1
-
     sample_image_processed = np.expand_dims(sample_image, axis=0)
     predictedLabel = np.argmax(model.predict(sample_image_processed), axis=-1)[0]
 
