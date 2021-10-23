@@ -23,12 +23,12 @@ def predict_label(img_path):
 
     return Dict[predictedLabel]
 
-@app.route('/', methods=['GET'])
+@app.route('/')
 def index():
     return render_template('index.html')
 
 
-@app.route('/submit', methods=['GET', 'POST'])
+@app.route('/submit', methods=['POST'])
 def get_output():
     if request.method == 'POST':
         img = request.files['my_image']
