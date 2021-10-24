@@ -1,6 +1,6 @@
 
 from flask import Flask, render_template, request
-import cv2
+# import cv2
 import numpy as np
 from tensorflow.keras.models import load_model
 import os
@@ -10,6 +10,7 @@ app = Flask(__name__)
 model = load_model('modelXYZ.h5')
 Dict = {0: 'Normal', 1: " Pneumonia"}
 
+'''
 def predict_label(img_path):
     i = cv2.imread(img_path)
     sample_image = cv2.resize(i, (224, 224))
@@ -22,7 +23,7 @@ def predict_label(img_path):
 
     return Dict[predictedLabel]
 
-
+'''
 @app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
