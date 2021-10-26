@@ -8,7 +8,7 @@ import os
 app = Flask(__name__)
 
 model = load_model('modelXYZ.h5')
-Dict = {0: 'Normal', 1: " Pneumonia"}
+Dict = {0: 'Normal', 1: "Pneumonia"}
 
 
 def predict_label(img_path):
@@ -21,7 +21,11 @@ def predict_label(img_path):
     sample_image_processed = np.expand_dims(sample_image, axis=0)
     predictedLabel = np.argmax(model.predict(sample_image_processed), axis=-1)[0]
 
-    return Dict[predictedLabel]
+    re = Dict[predictedLabel]
+    if re == "Pneumonia":
+        return "Pneumonia Positive", 1
+    return re, 0
+
 
 @app.route('/', methods=['GET'])
 def index():
@@ -34,9 +38,9 @@ def get_output():
         img = request.files['my_image']
         img_path = "static/" + img.filename
         img.save(img_path)
-        p = predict_label(img_path)
+        p, label = predict_label(img_path)
         os.remove(img_path)
-        return render_template("index.html", prediction=p)
+        return render_template("index.html", prediction=p, label=label)
 
 # main driver function
 if __name__ == '__main__':
