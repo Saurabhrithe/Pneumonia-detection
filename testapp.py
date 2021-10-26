@@ -1,27 +1,24 @@
-
 from flask import Flask, render_template, request
-import cv2
-import numpy as np
 from tensorflow.keras.models import load_model
+import cv2 as cv
+import numpy as np
 import os
 
 app = Flask(__name__)
 
-model = load_model('modelXYZ.h5')
-Dict = {0: 'Normal', 1: "Pneumonia"}
+model = load_model('model.h5')
+Dict = {0: "Normal", 1: "Pneumonia"}
 
 
-def predict_label(img_path):
-    i = cv2.imread(img_path)
-    sample_image = cv2.resize(i, (224, 224))
-    if sample_image.shape[2] == 1:
-        sample_image = np.dstack([sample_image, sample_image, sample_image])
-    sample_image = cv2.cvtColor(sample_image, cv2.COLOR_BGR2RGB)
-    sample_image = sample_image.astype(np.float32) / 255.
-    sample_image_processed = np.expand_dims(sample_image, axis=0)
-    predictedLabel = np.argmax(model.predict(sample_image_processed), axis=-1)[0]
-
-    re = Dict[predictedLabel]
+def predict_label(imgPath):
+    imgSize = (224, 224)
+    img = cv.imread(imgPath)
+    img = cv.resize(img, imgSize)
+    img = img.astype(np.float32)/255.
+    finalImg = np.expand_dims(img, axis=0)
+    result = np.argmax(model.predict(finalImg), axis=-1)[0]
+    re = Dict[result]
+    
     if re == "Pneumonia":
         return "Pneumonia Positive", 1
     return re, 0
@@ -40,8 +37,8 @@ def get_output():
         img.save(img_path)
         p, label = predict_label(img_path)
         os.remove(img_path)
-        return render_template("index.html", prediction=p, label=label)
+        return render_template('index.html', prediction=p, label=label)
 
 # main driver function
 if __name__ == '__main__':
-	app.run()
+    app.run()
