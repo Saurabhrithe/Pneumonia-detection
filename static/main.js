@@ -1,12 +1,11 @@
-<script>
-        const inpFile = document.getElementById("pwd");
-        const previewContainer = document.getElementById("img-preview");
-        const previewImage = previewContainer.querySelector(".img-preview-img");
-        const previewImgDefault = previewContainer.querySelector(".img-preview__default-text");
+const inpFile = document.getElementById("pwd");
+const previewContainer = document.getElementById("img-preview");
+const previewImage = previewContainer.querySelector(".img-preview-img");
+const previewImgDefault = previewContainer.querySelector(".img-preview__default-text");
 
-        inpFile.addEventListener("change", function(){
-            const file = this.files[0];
-            if (file){
+inpFile.addEventListener("change", function(){
+        const file = this.files[0];
+        if (file){
                 const reader = new FileReader();
 
                 previewImgDefault.style.display = "none";
@@ -19,4 +18,3 @@
                 reader.readAsDataURL(file);
             }
         });
-    </script>
