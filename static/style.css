@@ -1,4 +1,4 @@
-        body, html{
+body, html{
             background-color:#E0E0E0;
             }
         .top{
@@ -84,8 +84,5 @@
             border: 2px solid #00cec9;
             }
         .A{
-            color:white;
-        }
-        .B{
             color:white;
         }
