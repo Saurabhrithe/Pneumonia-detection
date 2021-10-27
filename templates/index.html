@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pneumonia Detection</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" />
-    <script type="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script>
 </head>
 <body>
     <div class="top"><p>Pneumonia Detection</p></div>
@@ -30,5 +29,27 @@
                 <b class="A">{{prediction}}</b>
             </p>
     {% endif %}
+    <script>
+        const inpFile = document.getElementById("pwd");
+        const previewContainer = document.getElementById("img-preview");
+        const previewImage = previewContainer.querySelector(".img-preview-img");
+        const previewImgDefault = previewContainer.querySelector(".img-preview__default-text");
+
+        inpFile.addEventListener("change", function(){
+            const file = this.files[0];
+            if (file){
+                const reader = new FileReader();
+
+                previewImgDefault.style.display = "none";
+                previewImage.style.display = "block";
+
+                reader.addEventListener("load", function(){
+                    console.log(this);
+                    previewImage.setAttribute("src", this.result);
+                });
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 </body>
 </html>
