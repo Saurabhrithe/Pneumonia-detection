@@ -1,26 +1,22 @@
-
-body, html{
-            display:block;
-            margin:0;
+        body, html{
             background-color:#E0E0E0;
             }
         .top{
-            width:device-width;
             background-color:black;
-            margin:0 auto;
             color:white;
-            item-align:center;
-            text-align:center;
+            text-align: center;
+            vertical-align: middle;
             border:5px solid white;
             border-radius:10px;
-            font-size:large;
+            font-size:20px;
+            font-family: "Lucida Console", "Courier New", monospace;
         }
-        .Base1{
+        form, .Base2{
             background-color:SlateBlue ;
             margin: 0 auto;
             width: 50%;
             border:5px solid white;
-            border-radius:20px;
+            border-radius:15px;
             padding: 15px;
         }
         .innerBase1{
@@ -29,15 +25,8 @@ body, html{
             margin: 0 auto;
         }
         .Base2{
-            width:50%;
-            margin:0 auto;
-            border:5px solid white;
-            padding:10px;
-            border-radius:15px;
             text-align:center;
-            background-color:SlateBlue;
-            color:black;
-            font-size:25px;
+            font-size:20px;
         }
         .label1{
             color:white;
@@ -50,10 +39,10 @@ body, html{
             height:30px;
             width:100px;
             border-radius:7px;
-            font-size:large;
             overflow-y: auto;
             background-color:Gainsboro ;
-            color:black;
+            font-size:20px;
+            font-family: "Lucida Console", "Courier New", monospace;
         }
         .Img-Preview{
             width:40%;
@@ -95,8 +84,8 @@ body, html{
             border: 2px solid #00cec9;
             }
         .A{
-            color:red;
+            color:white;
         }
         .B{
-            color:green;
+            color:white;
         }
