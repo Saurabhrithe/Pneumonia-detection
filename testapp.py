@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 
 model = load_model('model.h5')
-Dict = {0: "Normal", 1: "Pneumonia"}
+Dict = {0: 'Normal', 1: "Pneumonia"}
 
 
 def predict_label(imgPath):
@@ -20,8 +20,8 @@ def predict_label(imgPath):
     re = Dict[result]
     
     if re == "Pneumonia":
-        return "Pneumonia Positive", 1
-    return re, 0
+        return "Pneumonia Positive"
+    return re
 
 
 @app.route('/', methods=['GET'])
@@ -35,9 +35,9 @@ def get_output():
         img = request.files['my_image']
         img_path = "static/" + img.filename
         img.save(img_path)
-        p, label = predict_label(img_path)
+        p = predict_label(img_path)
         os.remove(img_path)
-        return render_template('index.html', prediction=p, label=label)
+        return render_template("index.html", prediction=p)
 
 # main driver function
 if __name__ == '__main__':
