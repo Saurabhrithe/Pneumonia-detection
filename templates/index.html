@@ -9,19 +9,18 @@
 <body>
     <div class="top"><p>Pneumonia Detection</p></div>
     <br>
-    <form method = "post"  action="/submit" enctype="multipart/form-data" class="Base1">
+    <form method = "post"  action="/submit" enctype="multipart/form-data">
         <div class="innerBase1">
             <label class="label1"><b> UPLOAD IMAGE </b></label>
             <br><br>
-            <input type="file" name="my_image" id="pwd" placeholder="image upload">
+            <input type="file" name="my_image" id="pwd">
             <div class="Img-Preview" id="img-preview">
                 <img src="" class="img-preview-img">
                 <span class="img-preview__default-text">Image Preview</span>
             </div>
             <br><br>
             <div class="buttons">
-                <button style='margin-right:10px' type="submit" id="btn" class="btn">Submit</button><br><br>
-                <input style='margin-left:10px' type="reset" value="Clear" class="btn" />
+                <button style='margin-right:10px' type="submit" id="btn" class="btn">Submit</button>
             </div>
         </div>
     </form>
@@ -56,6 +55,7 @@
                 reader.readAsDataURL(file);
             }
         });
+
     </script>
 
 </body>
