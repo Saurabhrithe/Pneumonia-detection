@@ -29,7 +29,7 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/submit', methods=['POST'])
+@app.route('/submit', methods=['GET','POST'])
 def get_output():
     if request.method == 'POST':
         img = request.files['my_image']
